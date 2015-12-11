@@ -248,7 +248,7 @@ public class BloggingContextConfiguration : DbConfiguration
   {
     // Set up the execution strategy for SQL Database (exponential) with 5 retries and 4 sec delay
     this.SetExecutionStrategy(
-         "System.Data.SqlClient", () => new SqlAzureExecutionStrategy(5, TimeSpan.FromSeconds(4)));
+         "System.Data.SqlClient", () => new SqlAzureExecutionStrategy(5, TimeSpan.FromSeconds(35)));
   }
 }
 ```
