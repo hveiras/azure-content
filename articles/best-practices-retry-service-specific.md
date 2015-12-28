@@ -875,13 +875,9 @@ The following table shows the default settings for the built-in retry policy.
 | **Context**            | **Settings**                                      | **Values** | **How it works**                                                                                                                                               |
 |------------------------|---------------------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | RetryPolicy (internal) | MaxRetryAttemptsOnQuery<br /><br />MaxRetryAttemptsOnRequest | 3<br /><br />0        | The number of retry attempts for document queries. This value cannot be changed.<br />The number of retry attempts for other requests. This value cannot be changed. |
-
-## Retry usage guidance
-
-Consider the following guidelines when using DocumentDB:
-
-* You cannot change the default retry policy.
-* See [TBD] for more information about the default settings.
+|WebExceptionRetryPolicy (internal)|WaitTimeInSeconds|30|The max amount of time in seconds within a retriable WebException is retried. WebException is retryable if it's status is ConnectFailure, NameResolutionFailure, ProxyNameResolutionFailure, SecureChannelFailure or TrustFailure|
+|ResourceThrottleRetryPolicy (internal)|MaxRetryAttemptsOnRequest |0|Retries if DocumentClientException status code is 429 (Too Many Requests). Note that as the value of max attempts is currently set to 0 this policy is not performing any retries.|
+|GoneAndRetryWithRetryPolicy (internal)|WaitTimeInSeconds|30|Retries on GoneException, RetryWithException and InvalidPartitionException.|
 
 ## Telemetry
 
